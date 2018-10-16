@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>vkuznetsov</groupId>
+    <artifactId>cbrservice</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>CBRService</name>
+
+    <organization>
+        <name>Тестовое задание - сервис cbr.ru</name>
+    </organization>
+
+    <properties>
+        <!-- Plugins properties -->
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--<maven-war-plugin.version>3.1.0</maven-war-plugin.version>-->
+        <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
+        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+        <maven-jaxws-plugin.version>2.5</maven-jaxws-plugin.version>
+        <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
+        <!-- End plugins properties -->
+    </properties>
+
+    <build>
+        <directory>${project.basedir}/target</directory>
+        <outputDirectory>${project.build.directory}/classes</outputDirectory>
+        <finalName>${project.artifactId}</finalName>
+        <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>resources</targetPath>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>${maven-jaxws-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <packageName>ru.kuznetsov.service.CBRClasses</packageName>
+                            <args>
+                                <arg>-b</arg>
+                                <arg>http://www.w3.org/2001/XMLSchema.xsd</arg>
+                                <!--<arg>-b</arg>
+                                <arg>${project.basedir}\src\main\resources\WSDL\CreditInfoByIntCodeEx.xsd</arg>-->
+                            </args>
+                            <wsdlFiles>
+                                <wsdlFile>${project.basedir}\src\main\resources\WSDL\CreditOrgInfo.WSDL</wsdlFile>
+                            </wsdlFiles>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                                <vmArg>-Djavax.xml.accessExternalDTD=all</vmArg>
+                            </vmArgs>
+                            <bindingFiles>
+                                <bindingFile>${project.basedir}\src\main\resources\WSDL\customization.xjb</bindingFile>
+                            </bindingFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourceDestDir>${project.basedir}\src\main\java</sourceDestDir>
+                    <xnocompile>true</xnocompile>
+                    <verbose>true</verbose>
+                    <extension>false</extension>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

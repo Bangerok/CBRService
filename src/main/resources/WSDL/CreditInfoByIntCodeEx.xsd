@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CreditOrgInfo" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="CreditOrgInfo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CO">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IntCode" msdata:Caption="Вн. код КО" type="xs:double" />
+              <xs:element name="RegNumber" msdata:Caption="Регистрационный номер КО" type="xs:short" minOccurs="0" />
+              <xs:element name="BIC" type="xs:string" minOccurs="0" />
+              <xs:element name="OrgName" type="xs:string" minOccurs="0" />
+              <xs:element name="OrgFullName" type="xs:string" minOccurs="0" />
+              <xs:element name="phones" type="xs:string" minOccurs="0" />
+              <xs:element name="DateKGRRegistration" msdata:Caption="Дата внесения в КГР" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MainRegNumber" msdata:Caption="Основной государственный регистрационный номер" type="xs:string" minOccurs="0" />
+              <xs:element name="MainDateReg" msdata:Caption="Дата присвоения государственного регистрационного номера" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UstavAdr" msdata:Caption="Адрес из устава" type="xs:string" minOccurs="0" />
+              <xs:element name="FactAdr" msdata:Caption="Адрес фактический" type="xs:string" minOccurs="0" />
+              <xs:element name="Director" msdata:Caption="Removed" type="xs:string" minOccurs="0" />
+              <xs:element name="UstMoney" msdata:Caption="Уставный капитал, руб." type="xs:double" minOccurs="0" />
+              <xs:element name="OrgStatus" msdata:Caption="Статус кредитной орг." type="xs:string" minOccurs="0" />
+              <xs:element name="RegCode" msdata:Caption="вн. код региона" type="xs:short" minOccurs="0" />
+              <xs:element name="SSV_Date" msdata:Caption="Дата вынесения заключения (признак внесения КО в Систему страхования вкладов)" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LIC">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IntCode" msdata:Caption="Вн. код КО" type="xs:double" minOccurs="0" />
+              <xs:element name="LCode" msdata:Caption="код статуса лицензии" type="xs:short" minOccurs="0" />
+              <xs:element name="LT" msdata:Caption="статус лицензии" type="xs:string" minOccurs="0" />
+              <xs:element name="LDate" msdata:Caption="Дата" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//CO" />
+      <xs:field xpath="IntCode" />
+    </xs:unique>
+    <xs:keyref name="ForeignKey" refer="Constraint1" msdata:ConstraintOnly="true">
+      <xs:selector xpath=".//LIC" />
+      <xs:field xpath="IntCode" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>
