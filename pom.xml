@@ -5,7 +5,7 @@
 
     <groupId>vkuznetsov</groupId>
     <artifactId>CBRService</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.7</version>
     <packaging>jar</packaging>
     <name>CBRService</name>
 
@@ -18,10 +18,10 @@
         <java.version>1.8</java.version>
         <wsdl-path>${project.basedir}/src/main/resources/META-INF/WSDL</wsdl-path>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
-        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-jaxws-plugin.version>2.5</maven-jaxws-plugin.version>
-        <maven-jar-plugin.version>2.3.1</maven-jar-plugin.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
         <!-- End plugins properties -->
     </properties>
 
