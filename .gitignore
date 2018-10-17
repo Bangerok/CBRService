@@ -1,2 +1,5 @@
-*.iml
-.idea
+/*.iml
+/.idea
+/README.md
+/src/main/java/ru/kuznetsov/service/CBRClasses
+/target

@@ -21,7 +21,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="CredorgNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="IndCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="IndCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="DateFrom" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
  *         &lt;element name="DateTo" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
  *       &lt;/sequence>
@@ -44,7 +44,7 @@ public class Data101FullV2 {
 
     @XmlElement(name = "CredorgNumber")
     protected int credorgNumber;
-    @XmlElement(name = "IndCode", required = true)
+    @XmlElement(name = "IndCode")
     protected String indCode;
     @XmlElement(name = "DateFrom", required = true)
     @XmlSchemaType(name = "dateTime")

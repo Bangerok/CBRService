@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="SearchByRegionCodeXMLResult">
+ *         &lt;element name="SearchByRegionCodeXMLResult" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "SearchByRegionCodeXMLResponse")
 public class SearchByRegionCodeXMLResponse {
 
-    @XmlElement(name = "SearchByRegionCodeXMLResult", required = true)
+    @XmlElement(name = "SearchByRegionCodeXMLResult")
     protected SearchByRegionCodeXMLResponse.SearchByRegionCodeXMLResult searchByRegionCodeXMLResult;
 
     /**

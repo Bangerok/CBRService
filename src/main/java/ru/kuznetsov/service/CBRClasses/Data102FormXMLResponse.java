@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Data102FormXMLResult">
+ *         &lt;element name="Data102FormXMLResult" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Data102FormXMLResponse")
 public class Data102FormXMLResponse {
 
-    @XmlElement(name = "Data102FormXMLResult", required = true)
+    @XmlElement(name = "Data102FormXMLResult")
     protected Data102FormXMLResponse.Data102FormXMLResult data102FormXMLResult;
 
     /**

@@ -65,8 +65,4 @@ public class ArrayOfDouble {
         }
         return this.doubles;
     }
-
-    public void setDoubles(List<Double> doubles) {
-        this.doubles = doubles;
-    }
 }

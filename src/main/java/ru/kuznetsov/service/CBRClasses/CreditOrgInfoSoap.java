@@ -25,9 +25,7 @@ public interface CreditOrgInfoSoap {
 
 
     /**
-     * Данные по BIC кодам КО (как XMLDocument), без
-     *         филиалов, ver: 04.07.2007
-     *       
+     * Данные по BIC кодам КО (как XMLDocument), без филиалов,  ver: 04.07.2007
      * 
      * @return
      *     returns ru.kuznetsov.service.CBRClasses.EnumBICXMLResponse.EnumBICXMLResult
@@ -39,9 +37,7 @@ public interface CreditOrgInfoSoap {
     public ru.kuznetsov.service.CBRClasses.EnumBICXMLResponse.EnumBICXMLResult enumBICXML();
 
     /**
-     * Получение максимальной даты отчетов по формам,
-     *         ver: 22.04.2015
-     *       
+     * Получение максимальной даты отчетов по формам, ver: 22.04.2015
      * 
      * @param code
      * @return
@@ -56,9 +52,7 @@ public interface CreditOrgInfoSoap {
         int code);
 
     /**
-     * Получение даты последнего обновления базы по
-     *         КО
-     *       
+     * Получение даты последнего обновления базы по КО
      * 
      * @return
      *     returns javax.xml.datatype.XMLGregorianCalendar
@@ -70,9 +64,7 @@ public interface CreditOrgInfoSoap {
     public XMLGregorianCalendar lastUpdate();
 
     /**
-     * Данные по BIC кодам КО (как DataSet), без
-     *         филиалов, ver: 17.03.2015
-     *       
+     * Данные по BIC кодам КО (как DataSet), без филиалов, ver: 17.03.2015
      * 
      * @return
      *     returns ru.kuznetsov.service.CBRClasses.EnumBICResponse.EnumBICResult
@@ -84,9 +76,7 @@ public interface CreditOrgInfoSoap {
     public ru.kuznetsov.service.CBRClasses.EnumBICResponse.EnumBICResult enumBIC();
 
     /**
-     * Данные КО. формы 101 (как XMLDocument) по
-     *         нескольким КО
-     *       
+     * Данные КО. формы 101 (как XMLDocument) по нескольким КО
      * 
      * @param indID
      * @param dateTo
@@ -110,9 +100,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101, без оборотов (как DataSet)
-     *         по нескольким КО ver 07.03.2017
-     *       
+     * Данные КО. формы 101, без оборотов (как DataSet) по нескольким КО ver 07.03.2017
      * 
      * @param indID
      * @param dateTo
@@ -136,9 +124,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101, без оборотов (как
-     *         XMLDocument)
-     *       
+     * Данные КО. формы 101, без оборотов (как XMLDocument)
      * 
      * @param indID
      * @param dateTo
@@ -162,9 +148,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101, без оборотов (как
-     *         DataSet)
-     *       
+     * Данные КО. формы 101, без оборотов (как DataSet)
      * 
      * @param indID
      * @param dateTo
@@ -188,9 +172,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101, полностью (как
-     *         XMLDocument)
-     *       
+     * Данные КО. формы 101, полностью (как XMLDocument)
      * 
      * @param indCode
      * @param dateTo
@@ -214,9 +196,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101,полностью (Внимание, метод
-     *         устарел, используйте v2) (как XMLDocument) по нескольким КО. ver 17.03.2015
-     *       
+     * Данные КО. формы 101,полностью  (Внимание, метод устарел, используйте v2) (как XMLDocument) по нескольким КО. ver 17.03.2015
      * 
      * @param indCode
      * @param dateTo
@@ -240,9 +220,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101,полностью (Внимание, метод
-     *         устарел, используйте v2) (как DataSet) ver 17.03.2015
-     *       
+     * Данные КО. формы 101,полностью (Внимание, метод устарел, используйте v2) (как DataSet) ver 17.03.2015
      * 
      * @param indCode
      * @param dateTo
@@ -266,9 +244,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101,полностью (как XML) ver
-     *         07.03.2017
-     *       
+     * Данные КО. формы 101,полностью (как XML) ver 07.03.2017
      * 
      * @param indCode
      * @param dateTo
@@ -292,9 +268,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101,полностью (как DataSet) ver
-     *         07.03.2017
-     *       
+     * Данные КО. формы 101,полностью (как DataSet) ver 07.03.2017
      * 
      * @param indCode
      * @param dateTo
@@ -318,9 +292,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101,полностью (Устарел,
-     *         используйте v2) (как DataSet)
-     *       
+     * Данные КО. формы 101,полностью (Устарел, используйте v2) (как DataSet)
      * 
      * @param indCode
      * @param dateTo
@@ -344,9 +316,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101,полностью (как XML) mod
-     *         07.03.2017
-     *       
+     * Данные КО. формы 101,полностью (как XML) mod 07.03.2017
      * 
      * @param indCode
      * @param dateTo
@@ -370,9 +340,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 101,полностью (как DataSet) mod
-     *         07.03.2017
-     *       
+     * Данные КО. формы 101,полностью (как DataSet) mod 07.03.2017
      * 
      * @param indCode
      * @param dateTo
@@ -396,9 +364,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 102, кратко (как XMLDocument)
-     *         по нескольким КО.
-     *       
+     * Данные КО. формы 102, кратко (как XMLDocument) по нескольким КО.
      * 
      * @param symbCode
      * @param dateTo
@@ -422,9 +388,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Данные КО. формы 102 (как DataSet) по нескольким
-     *         КО. ver 24.06.2014
-     *       
+     * Данные КО. формы 102 (как DataSet) по нескольким КО. ver 24.06.2014
      * 
      * @param symbCode
      * @param dateTo
@@ -449,7 +413,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Данные КО. формы 102, кратко (как XMLDocument)
-     *       
      * 
      * @param symbCode
      * @param dateTo
@@ -474,7 +437,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Данные КО. формы 102 (как DataSet)
-     *       
      * 
      * @param symbCode
      * @param dateTo
@@ -498,9 +460,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar dateTo);
 
     /**
-     * Справочник символов для формы 102 (как
-     *         XMLDocument)
-     *       
+     * Справочник символов для формы 102 (как XMLDocument)
      * 
      * @return
      *     returns ru.kuznetsov.service.CBRClasses.Form102IndicatorsEnumXMLResponse.Form102IndicatorsEnumXMLResult
@@ -512,9 +472,7 @@ public interface CreditOrgInfoSoap {
     public ru.kuznetsov.service.CBRClasses.Form102IndicatorsEnumXMLResponse.Form102IndicatorsEnumXMLResult form102IndicatorsEnumXML();
 
     /**
-     * Справочник символов для формы 102 (как
-     *         DataSet)
-     *       
+     * Справочник символов для формы 102 (как DataSet)
      * 
      * @return
      *     returns ru.kuznetsov.service.CBRClasses.Form102IndicatorsEnumResponse.Form102IndicatorsEnumResult
@@ -526,9 +484,7 @@ public interface CreditOrgInfoSoap {
     public ru.kuznetsov.service.CBRClasses.Form102IndicatorsEnumResponse.Form102IndicatorsEnumResult form102IndicatorsEnum();
 
     /**
-     * Справочник индикаторов для формы 101 (как
-     *         XMLDocument)
-     *       
+     * Справочник индикаторов для формы 101 (как XMLDocument)
      * 
      * @return
      *     returns ru.kuznetsov.service.CBRClasses.Form101IndicatorsEnumXMLResponse.Form101IndicatorsEnumXMLResult
@@ -540,9 +496,7 @@ public interface CreditOrgInfoSoap {
     public ru.kuznetsov.service.CBRClasses.Form101IndicatorsEnumXMLResponse.Form101IndicatorsEnumXMLResult form101IndicatorsEnumXML();
 
     /**
-     * Справочник индикаторов для формы 101 (как
-     *         DataSet)
-     *       
+     * Справочник индикаторов для формы 101 (как DataSet)
      * 
      * @return
      *     returns ru.kuznetsov.service.CBRClasses.Form101IndicatorsEnumResponse.Form101IndicatorsEnumResult
@@ -555,7 +509,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Регистрационный номер во внутренний код КО.
-     *       
      * 
      * @param regNumber
      * @return
@@ -570,9 +523,7 @@ public interface CreditOrgInfoSoap {
         double regNumber);
 
     /**
-     * внутренний код кред.орг. в регистрационный номер
-     *         КО.
-     *       
+     * внутренний код кред.орг. в регистрационный номер КО.
      * 
      * @param intNumber
      * @return
@@ -588,7 +539,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Bic код во внутренний код кред.орг.
-     *       
      * 
      * @param bicCode
      * @return
@@ -604,7 +554,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Bic код в регистрационный номер кред.орг.
-     *       
      * 
      * @param bicCode
      * @return
@@ -620,7 +569,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Справочник регионов (как DataSet)
-     *       
      * 
      * @return
      *     returns ru.kuznetsov.service.CBRClasses.RegionsEnumResponse.RegionsEnumResult
@@ -632,9 +580,7 @@ public interface CreditOrgInfoSoap {
     public ru.kuznetsov.service.CBRClasses.RegionsEnumResponse.RegionsEnumResult regionsEnum();
 
     /**
-     * Справочник регионов (как XMLDocument), ver-
-     *         18.01.2007
-     *       
+     * Справочник регионов (как XMLDocument), ver- 18.01.2007
      * 
      * @return
      *     returns ru.kuznetsov.service.CBRClasses.RegionsEnumXMLResponse.RegionsEnumXMLResult
@@ -646,9 +592,7 @@ public interface CreditOrgInfoSoap {
     public ru.kuznetsov.service.CBRClasses.RegionsEnumXMLResponse.RegionsEnumXMLResult regionsEnumXML();
 
     /**
-     * Поиск кредитных орг. по региону(коду) (как
-     *         DataSet)
-     *       
+     * Поиск кредитных орг. по региону(коду) (как DataSet)
      * 
      * @param regCode
      * @return
@@ -663,9 +607,7 @@ public interface CreditOrgInfoSoap {
         int regCode);
 
     /**
-     * Поиск кредитных орг. по региону(коду) (как
-     *         XML)
-     *       
+     * Поиск кредитных орг. по региону(коду) (как XML)
      * 
      * @param regCode
      * @return
@@ -681,7 +623,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Поиск кредитных орг. по названию (как XML)
-     *       
      * 
      * @param namePart
      * @return
@@ -697,7 +638,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Поиск кредитных орг. по названию (как DataSet)
-     *       
      * 
      * @param namePart
      * @return
@@ -712,9 +652,7 @@ public interface CreditOrgInfoSoap {
         String namePart);
 
     /**
-     * Информация о кредитной орг. по вн.коду (как
-     *         XMLDocument)
-     *       
+     * Информация о кредитной орг. по вн.коду (как XMLDocument)
      * 
      * @param internalCode
      * @return
@@ -729,9 +667,7 @@ public interface CreditOrgInfoSoap {
         double internalCode);
 
     /**
-     * Информация о кредитной орг. по вн.коду (как XML
-     *         Document) ver- 26.02.2015
-     *       
+     * Информация о кредитной орг. по вн.коду (как XML Document) ver- 26.02.2015
      * 
      * @param internalCodes
      * @return
@@ -746,9 +682,7 @@ public interface CreditOrgInfoSoap {
         ArrayOfDouble internalCodes);
 
     /**
-     * Информация о кредитной орг. по вн.коду (как
-     *         DataSet) ver- 03.03.2015
-     *       
+     * Информация о кредитной орг. по вн.коду (как DataSet) ver- 03.03.2015
      * 
      * @param internalCodes
      * @return
@@ -763,9 +697,7 @@ public interface CreditOrgInfoSoap {
         ArrayOfDouble internalCodes);
 
     /**
-     * Информация о кредитной орг. по вн.коду (как
-     *         DataSet) ver- 11.01.2007
-     *       
+     * Информация о кредитной орг. по вн.коду (как DataSet) ver- 11.01.2007
      * 
      * @param internalCode
      * @return
@@ -780,9 +712,7 @@ public interface CreditOrgInfoSoap {
         double internalCode);
 
     /**
-     * Информация по филиальной сети кредитной орг. по
-     *         вн.коду (как DataSet), ver- 18.01.2007
-     *       
+     * Информация по филиальной сети кредитной орг. по вн.коду (как DataSet), ver- 18.01.2007
      * 
      * @param intCode
      * @return
@@ -797,9 +727,7 @@ public interface CreditOrgInfoSoap {
         double intCode);
 
     /**
-     * Информация по филиальной сети кредитной орг. по
-     *         региону (коду) (как DataSet), ver- 18.01.2007
-     *       
+     * Информация по филиальной сети кредитной орг. по региону (коду) (как DataSet), ver- 18.01.2007
      * 
      * @param regCode
      * @return
@@ -814,9 +742,7 @@ public interface CreditOrgInfoSoap {
         int regCode);
 
     /**
-     * Информация по филиальной сети кредитной орг. по
-     *         вн.коду (как XML)
-     *       
+     * Информация по филиальной сети кредитной орг. по вн.коду (как XML)
      * 
      * @param intCode
      * @return
@@ -831,9 +757,7 @@ public interface CreditOrgInfoSoap {
         double intCode);
 
     /**
-     * Информация по филиальной сети кредитной орг. по
-     *         региону (коду) (как XML), ver- 18.01.2007
-     *       
+     * Информация по филиальной сети кредитной орг. по региону (коду) (как XML), ver- 18.01.2007
      * 
      * @param regCode
      * @return
@@ -849,7 +773,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Данные по форме 134 (как XML)
-     *       
      * 
      * @param onDate
      * @param credorgNumber
@@ -868,7 +791,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Данные по форме 134, OLAP, (как DataSet)
-     *       
      * 
      * @param fromDate
      * @param code
@@ -892,9 +814,7 @@ public interface CreditOrgInfoSoap {
         XMLGregorianCalendar toDate);
 
     /**
-     * Данные по форме 135 (как DataSet) ver
-     *         05.06.2014
-     *       
+     * Данные по форме 135 (как DataSet) ver 05.06.2014
      * 
      * @param onDate
      * @param credorgNumber
@@ -913,7 +833,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Данные по форме 135 (как XML)
-     *       
      * 
      * @param onDate
      * @param credorgNumber
@@ -932,7 +851,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Данные по форме 123 (как DataSet)
-     *       
      * 
      * @param onDate
      * @param credorgNumber
@@ -951,7 +869,6 @@ public interface CreditOrgInfoSoap {
 
     /**
      * Данные по форме 123 (как XML)
-     *       
      * 
      * @param onDate
      * @param credorgNumber
@@ -1044,9 +961,7 @@ public interface CreditOrgInfoSoap {
         int credprgNumber);
 
     /**
-     * Данные по форме 134 - устаревшие, данные до 2015
-     *         г. (как DataSet)
-     *       
+     * Данные по форме 134 - устаревшие, данные до 2015 г. (как DataSet)
      * 
      * @param onDate
      * @param credorgNumber

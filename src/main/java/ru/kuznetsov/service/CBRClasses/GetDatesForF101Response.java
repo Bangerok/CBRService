@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="GetDatesForF101Result" type="{http://web.cbr.ru/}ArrayOfDateTime"/>
+ *         &lt;element name="GetDatesForF101Result" type="{http://web.cbr.ru/}ArrayOfDateTime" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "GetDatesForF101Response")
 public class GetDatesForF101Response {
 
-    @XmlElement(name = "GetDatesForF101Result", required = true)
+    @XmlElement(name = "GetDatesForF101Result")
     protected ArrayOfDateTime getDatesForF101Result;
 
     /**

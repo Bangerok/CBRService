@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Data101FullXMLResult">
+ *         &lt;element name="Data101FullXMLResult" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Data101FullXMLResponse")
 public class Data101FullXMLResponse {
 
-    @XmlElement(name = "Data101FullXMLResult", required = true)
+    @XmlElement(name = "Data101FullXMLResult")
     protected Data101FullXMLResponse.Data101FullXMLResult data101FullXMLResult;
 
     /**

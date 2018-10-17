@@ -20,7 +20,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Code" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="CredorgNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="FromDate" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
  *         &lt;element name="ToDate" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
@@ -42,7 +42,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlRootElement(name = "Olap134Form")
 public class Olap134Form {
 
-    @XmlElement(name = "Code", required = true)
+    @XmlElement(name = "Code")
     protected String code;
     @XmlElement(name = "CredorgNumber")
     protected int credorgNumber;

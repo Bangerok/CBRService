@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="GetOfficesByRegionXMLResult">
+ *         &lt;element name="GetOfficesByRegionXMLResult" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "GetOfficesByRegionXMLResponse")
 public class GetOfficesByRegionXMLResponse {
 
-    @XmlElement(name = "GetOfficesByRegionXMLResult", required = true)
+    @XmlElement(name = "GetOfficesByRegionXMLResult")
     protected GetOfficesByRegionXMLResponse.GetOfficesByRegionXMLResult getOfficesByRegionXMLResult;
 
     /**

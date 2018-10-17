@@ -20,7 +20,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="CredorgNumbers" type="{http://web.cbr.ru/}ArrayOfAnyType"/>
+ *         &lt;element name="CredorgNumbers" type="{http://web.cbr.ru/}ArrayOfAnyType" minOccurs="0"/>
  *         &lt;element name="IndID" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="DateFrom" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
  *         &lt;element name="DateTo" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
@@ -42,7 +42,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlRootElement(name = "Data101FormExXML")
 public class Data101FormExXML {
 
-    @XmlElement(name = "CredorgNumbers", required = true)
+    @XmlElement(name = "CredorgNumbers")
     protected ArrayOfAnyType credorgNumbers;
     @XmlElement(name = "IndID")
     protected int indID;

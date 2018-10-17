@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Form102IndicatorsEnumXMLResult">
+ *         &lt;element name="Form102IndicatorsEnumXMLResult" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Form102IndicatorsEnumXMLResponse")
 public class Form102IndicatorsEnumXMLResponse {
 
-    @XmlElement(name = "Form102IndicatorsEnumXMLResult", required = true)
+    @XmlElement(name = "Form102IndicatorsEnumXMLResult")
     protected Form102IndicatorsEnumXMLResponse.Form102IndicatorsEnumXMLResult form102IndicatorsEnumXMLResult;
 
     /**
