@@ -97,6 +97,7 @@
                             </vmArgs>
                             <bindingFiles>
                                 <bindingFile>${wsdl-path}/customization.xjb</bindingFile>
+                                <bindingFile>${wsdl-path}/CreditInfoByIntCodeEx.xsd</bindingFile>
                             </bindingFiles>
                         </configuration>
                     </execution>
