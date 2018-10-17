@@ -83,7 +83,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <packageName>ru.kuznetsov.service.CBRClasses</packageName>
+                            <packageName>ru.cbr</packageName>
                             <args>
                                 <arg>-b</arg>
                                 <arg>http://www.w3.org/2001/XMLSchema.xsd</arg>
@@ -118,8 +118,8 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.kuznetsov.service.Application</mainClass>
-                            <packageName>ru.kuznetsov.service</packageName>
+                            <mainClass>ru.kuznetsov.application.Application</mainClass>
+                            <packageName>ru.kuznetsov.application</packageName>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
