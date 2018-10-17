@@ -7,10 +7,16 @@ public class Application {
     private static Logger log = Logger.getLogger(Application.class.getName());
 
     public static void main(String[] args){
+        Application app = new Application();
+        CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult result = app.getCreditOrgInfo();
+
+        log.log(Level.INFO, "getCreditOrgInfo returned - " + result);
+    }
+
+    private CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult getCreditOrgInfo(){
         try {
             CreditOrgInfo_Service creditOrgInfo = new CreditOrgInfo_Service();
             CreditOrgInfoSoap soap = creditOrgInfo.getCreditOrgInfoSoap();
-            log.log(Level.INFO, "CreditOrgInfoSoap initialization was successful.");
 
             double internalCode = soap.bicToIntCode("040173725");
             log.log(Level.INFO, "bicToIntCode returned internal code - " + Double.toString(internalCode));
@@ -20,9 +26,11 @@ public class Application {
 
             CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult info;
             info = soap.creditInfoByIntCodeExXML(internalCodes);
-            log.log(Level.INFO, "creditInfoByIntCodeExXML returned data - " + info.getContent().toString());
+
+            return info;
         } catch (Exception e) {
             log.log(Level.SEVERE, "Exception - " + e.getMessage());
+            return null;
         }
     }
 }

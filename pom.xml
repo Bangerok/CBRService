@@ -21,6 +21,7 @@
         <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <maven-jaxws-plugin.version>2.5</maven-jaxws-plugin.version>
+        <maven-jar-plugin.version>2.3.1</maven-jar-plugin.version>
         <!-- End plugins properties -->
     </properties>
 
@@ -106,6 +107,23 @@
                     <xnocompile>true</xnocompile>
                     <verbose>true</verbose>
                     <extension>false</extension>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>ru.kuznetsov.service.Application</mainClass>
+                            <packageName>ru.kuznetsov.service</packageName>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
