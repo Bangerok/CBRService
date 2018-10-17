@@ -76,6 +76,7 @@
                 <version>${maven-jaxws-plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>CreditOrgInfo</id>
                         <goals>
                             <goal>wsimport</goal>
                         </goals>
@@ -85,8 +86,6 @@
                             <args>
                                 <arg>-b</arg>
                                 <arg>http://www.w3.org/2001/XMLSchema.xsd</arg>
-                                <!--<arg>-b</arg>
-                                <arg>src/main/resources/WSDL/CreditInfoByIntCodeEx.xsd</arg>-->
                             </args>
                             <wsdlFiles>
                                 <wsdlFile>${wsdl-path}/CreditOrgInfo.WSDL</wsdlFile>
