@@ -16,8 +16,8 @@
     <properties>
         <!-- Plugins properties -->
         <java.version>1.8</java.version>
+        <wsdl-path>${project.basedir}/src/main/resources/META-INF/WSDL</wsdl-path>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<maven-war-plugin.version>3.1.0</maven-war-plugin.version>-->
         <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <maven-jaxws-plugin.version>2.5</maven-jaxws-plugin.version>
@@ -86,23 +86,23 @@
                                 <arg>-b</arg>
                                 <arg>http://www.w3.org/2001/XMLSchema.xsd</arg>
                                 <!--<arg>-b</arg>
-                                <arg>${project.basedir}\src\main\resources\WSDL\CreditInfoByIntCodeEx.xsd</arg>-->
+                                <arg>src/main/resources/WSDL/CreditInfoByIntCodeEx.xsd</arg>-->
                             </args>
                             <wsdlFiles>
-                                <wsdlFile>${project.basedir}\src\main\resources\WSDL\CreditOrgInfo.WSDL</wsdlFile>
+                                <wsdlFile>${wsdl-path}/CreditOrgInfo.WSDL</wsdlFile>
                             </wsdlFiles>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                                 <vmArg>-Djavax.xml.accessExternalDTD=all</vmArg>
                             </vmArgs>
                             <bindingFiles>
-                                <bindingFile>${project.basedir}\src\main\resources\WSDL\customization.xjb</bindingFile>
+                                <bindingFile>${wsdl-path}/customization.xjb</bindingFile>
                             </bindingFiles>
                         </configuration>
                     </execution>
                 </executions>
                 <configuration>
-                    <sourceDestDir>${project.basedir}\src\main\java</sourceDestDir>
+                    <sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
                     <xnocompile>true</xnocompile>
                     <verbose>true</verbose>
                     <extension>false</extension>
