@@ -1,67 +1,42 @@
 package ru.kuznetsov.application;
 
-import ru.cbr.*;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
+import ru.kuznetsov.service.CBRService;
+import ru.kuznetsov.service.CBRServiceImpl;
 
-import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Application {
     private static Logger log = Logger.getLogger(Application.class.getName());
-    private CreditOrgInfoSoap soap;
+    private static int PRETTY_PRINT_INDENT_FACTOR = 3;
+    private static String TEST_XML_STRING =
+            "<?xml version=\"10\" ?><BIC>1234567</BIC><BIC>2345678</BIC><BIC>3456789</BIC>";
+    private static String TEST_JSON_STRING =
+            "{\"BIC\":[\"1234567\",\"2345678\",\"3456789\"]}";
 
-    public Application() {
-        this.soap = getCreditOrgInfoSoap();
-    }
     public static void main(String[] args){
-        Application app = new Application();
-        CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult result = app.getCreditOrgInfoElement();
+        CBRService service = new CBRServiceImpl();
 
-        assert result != null;
-        List cosAndLics = ((CreditOrgInfo) result.getContent().get(0)).getCOSAndLICS();
+        try {
+            JSONObject xmlJSONObj = XML.toJSONObject(TEST_XML_STRING);
+            JSONObject xmlJSONObj1 = new JSONObject(TEST_JSON_STRING);
+            System.out.println(xmlJSONObj.toString());
+            System.out.println(xmlJSONObj1.toString());
+        } catch (JSONException je) {
+            System.out.println(je.toString());
+        }
+
+        /*List cosAndLics = service.getCreditOrgInfoList();
 
         double m = 0;
+        assert cosAndLics != null;
         for (Object cosAndLic : cosAndLics) {
             CreditOrgInfo.CO co = (CreditOrgInfo.CO) cosAndLic;
             m = co.getIntCode();
         }
 
-        log.log(Level.INFO, "getCreditOrgInfo returned intCode - " + Double.toString(m));
-    }
-
-    private CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult getCreditOrgInfoElement(){
-        try {
-            double internalCode = soap.bicToIntCode("040173725");
-            log.log(Level.INFO, "bicToIntCode returned internal code - " + Double.toString(internalCode));
-
-            ArrayOfDouble internalCodes = new ArrayOfDouble();
-            internalCodes.getDoubles().add(internalCode);
-
-            CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult info;
-            info = soap.creditInfoByIntCodeExXML(internalCodes);
-
-            return info;
-        } catch (Exception e) {
-            log.log(Level.SEVERE, "Exception - " + e.getMessage());
-            return null;
-        }
-    }
-
-    /*private CreditOrgInfoSoap getCreditOrgInfo(){
-        try {
-            return null;
-        } catch (Exception e) {
-            log.log(Level.SEVERE, "Exception - " + e.getMessage());
-            return null;
-        }
-    }*/
-
-    private CreditOrgInfoSoap getCreditOrgInfoSoap(){
-        try {
-            return new CreditOrgInfo_Service().getCreditOrgInfoSoap();
-        } catch (Exception e) {
-            log.log(Level.SEVERE, "Exception [getCreditOrgInfoSoap] - " + e.getMessage());
-            return null;
-        }
+        log.log(Level.INFO, "getCreditOrgInfo returned intCode - " + Double.toString(m));*/
     }
 }

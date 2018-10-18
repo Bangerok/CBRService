@@ -14,6 +14,10 @@
     </organization>
 
     <properties>
+        <!-- Dependencies properties -->
+        <json.version>20180813</json.version>
+        <!-- End dependencies properties -->
+
         <!-- Plugins properties -->
         <java.version>1.8</java.version>
         <wsdl-path>${project.basedir}/src/main/resources/META-INF/WSDL</wsdl-path>
@@ -24,6 +28,14 @@
         <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
         <!-- End plugins properties -->
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <directory>${project.basedir}/target</directory>

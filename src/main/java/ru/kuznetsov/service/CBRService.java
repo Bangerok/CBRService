@@ -1,5 +1,8 @@
 package ru.kuznetsov.service;
 
-interface CBRService {
+import java.util.List;
 
+public interface CBRService {
+    List getCreditOrgInfoList();
+    void initCreditOrgInfoSoap();
 }
