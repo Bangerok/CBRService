@@ -1,5 +1,6 @@
 package ru.kuznetsov.service;
 
+import org.springframework.stereotype.Service;
 import ru.cbr.*;
 import ru.kuznetsov.Application;
 
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Service
 public class CBRServiceImpl implements CBRService{
     private static Logger log = Logger.getLogger(Application.class.getName());
     private CreditOrgInfoSoap soap;
@@ -19,7 +21,8 @@ public class CBRServiceImpl implements CBRService{
     }
 
     /**
-     * Получение данных об организациях ввиде списка
+     * Получение данных об организациях ввиде списка,
+     * используя внутренний код, полученный по bic коду
      * @return List
      */
     public List getCreditOrgInfoList(){

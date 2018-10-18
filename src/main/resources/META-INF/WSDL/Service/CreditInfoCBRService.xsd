@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.kuznetsov.ru/soap" elementFormDefault="qualified">
+    <element name="ServiceRequest">
+        <complexType>
+            <sequence>
+                <element name="bicCode" type="string" maxOccurs="1" minOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="ServiceResponse">
+        <complexType>
+            <sequence>
+                <element name="typeResponse" type="string" maxOccurs="1" minOccurs="1"/>
+                <element name="additionalInfo" type="string" maxOccurs="1" minOccurs="1"/>
+                <element name="file" type="string" maxOccurs="1" minOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>
