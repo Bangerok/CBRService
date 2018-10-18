@@ -1,7 +1,7 @@
 package ru.kuznetsov.service;
 
 import ru.cbr.*;
-import ru.kuznetsov.application.Application;
+import ru.kuznetsov.Application;
 
 import java.util.List;
 import java.util.logging.Level;

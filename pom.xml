@@ -15,7 +15,6 @@
 
     <properties>
         <!-- Dependencies properties -->
-        <json.version>20180813</json.version>
         <!-- End dependencies properties -->
 
         <!-- Plugins properties -->
@@ -29,11 +28,21 @@
         <!-- End plugins properties -->
     </properties>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.5.RELEASE</version>
+    </parent>
+
     <dependencies>
         <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>${json.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web-services</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
         </dependency>
     </dependencies>
 
@@ -130,13 +139,18 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.kuznetsov.application.Application</mainClass>
+                            <mainClass>ru.kuznetsov.Application</mainClass>
                             <packageName>ru.kuznetsov.application</packageName>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
                     </archive>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
