@@ -10,7 +10,7 @@ import ru.kuznetsov.soap.ServiceResponse;
 
 @Endpoint
 public class WEBServiceEndpoint {
-    private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/WEBService";
+    private static final String NAMESPACE_URI = "http://localhost:8080/WEBService";
     private CBRService service;
 
     @Autowired
