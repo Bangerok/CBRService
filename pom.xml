@@ -126,29 +126,6 @@
                             </bindingFiles>
                         </configuration>
                     </execution>
-                    <!--<execution>
-                        <id>CreditOrgInfoSoap</id>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <packageName>ru.kuznetsov.soap</packageName>
-                            &lt;!&ndash;<args>
-                                <arg>-b</arg>
-                                <arg>http://www.w3.org/2001/XMLSchema.xsd</arg>
-                            </args>&ndash;&gt;
-                            <wsdlFiles>
-                                <wsdlFile>${wsdl-path}/Service/CreditInfoCBRService.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            &lt;!&ndash;<vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalDTD=all</vmArg>
-                            </vmArgs>&ndash;&gt;
-                            &lt;!&ndash;<bindingFiles>
-                                <bindingFile>${wsdl-path}/CBR/customization.xjb</bindingFile>
-                            </bindingFiles>&ndash;&gt;
-                        </configuration>
-                    </execution>-->
                 </executions>
                 <configuration>
                     <sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>

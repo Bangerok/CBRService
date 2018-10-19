@@ -35,6 +35,6 @@ public class WebServiceConfig {
 
     @Bean
     public XsdSchema creditInfoCBRServiceSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("/META-INF/WSDL/Service/CreditInfoCBRService.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("resources/META-INF/WSDL/Service/CreditInfoCBRService.xsd"));
     }
 }
