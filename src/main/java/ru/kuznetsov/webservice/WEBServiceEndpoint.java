@@ -9,7 +9,8 @@ import ru.kuznetsov.soap.ServiceResponse;
 
 @Endpoint
 public class WEBServiceEndpoint {
-    private static final String NAMESPACE_URI = "http://localhost:8080/WEBService";
+    private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/soap";
+    //private static final String NAMESPACE_URI = "http://localhost:8080/WEBService";
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ServiceRequest")
     @ResponsePayload
