@@ -3,12 +3,11 @@ package ru.kuznetsov;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.logging.Logger;
-
 @SpringBootApplication
 public class Application {
-    private static Logger log = Logger.getLogger(Application.class.getName());
-
+    /**
+     * Запускает сервер spring-boot
+     */
     public static void main(String[] args){
         SpringApplication.run(Application.class, args);
 

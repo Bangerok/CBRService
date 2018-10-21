@@ -10,17 +10,17 @@ import ru.kuznetsov.soap.ServiceResponse;
 @Endpoint
 public class WEBServiceEndpoint {
     private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/soap";
-    //private static final String NAMESPACE_URI = "http://localhost:8080/WEBService";
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ServiceRequest")
     @ResponsePayload
     public ServiceResponse getCreditInfoSoap(@RequestPayload ServiceRequest request) {
         String bicCodes = request.getBicCode();
-        ServiceResponse resp = new ServiceResponse();
 
+        ServiceResponse resp = new ServiceResponse();
         resp.setTypeResponse("ok");
         resp.setAdditionalInfo(bicCodes);
         resp.setFile("test.pdf success");
+
         return resp;
     }
 }
