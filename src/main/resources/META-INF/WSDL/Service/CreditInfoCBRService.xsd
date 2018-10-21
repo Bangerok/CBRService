@@ -6,7 +6,7 @@
     <xs:element name="ServiceRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="bicCode" type="xs:string"/>
+                <xs:element name="bicCodesXML" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

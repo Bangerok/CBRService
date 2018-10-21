@@ -14,7 +14,7 @@ public class WEBServiceEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ServiceRequest")
     @ResponsePayload
     public ServiceResponse getCreditInfoSoap(@RequestPayload ServiceRequest request) {
-        String bicCodes = request.getBicCode();
+        String bicCodes = request.getBicCodesXML();
 
         ServiceResponse resp = new ServiceResponse();
         resp.setTypeResponse("ok");
