@@ -8,7 +8,7 @@
 - <b>[Список методов](http://www.cbr.ru/development/WSCO/);</b>
 - <b>[WSDL](http://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx?WSDL).</b>
 
-**Входные данные -** bic банка. Пример: "040173725".
+**Входные данные -** список bic кодов банков. Пример bic кода: "040173725".
 
 **Результат:** информация о банке в виде файла PDF. Пример: info.pdf.
 
@@ -44,3 +44,5 @@
 - Выполнить команду **mvn spring-boot:run**;
 - Для проверки запустить программу Soap UI и выбрать **File => New Soap Project**. В появившемся окне в поле **Initial WSDL** вставить путь до сохраненного файла WSDL с <b>[этой страницы](http://localhost:8080/ws/CreditInfoCBRService.wsdl)</b> и нажать **ОК**;
 - После создания нового проекта в Soap UI выбрать единственный запрос и вставить вместо знака вопроса <b>[пример строки XML формата](https://github.com/Bangerok/CBRService/blob/master/src/main/resources/META-INF/Test/ServiceRequestTest.txt)</b>;
+- Отправить получившийся запрос;
+- Получить и смотреть ответ.

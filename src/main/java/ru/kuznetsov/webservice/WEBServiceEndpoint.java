@@ -47,7 +47,7 @@ public class WEBServiceEndpoint {
         // По внутреннему коду мы можем получить всю информацию об организации
         List creditOrgInfoList = cbrService.getCreditOrgInfoList(internalCodesList);
 
-        // Формирование ответа клиенту
+        // Формирование и отправка ответа клиенту
         ServiceResponse response = new ServiceResponse();
         response.setTypeResponse("ok");
         response.setAdditionalInfo(stringXML);
