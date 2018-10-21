@@ -2,5 +2,4 @@
 .idea
 README.md
 src/main/java/ru/cbr
-src/main/java/ru/kuznetsov/soap/
-src/main/resources/META-INF/Test/
+src/main/java/ru/kuznetsov/soap
