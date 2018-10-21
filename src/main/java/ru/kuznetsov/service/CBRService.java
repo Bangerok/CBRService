@@ -1,8 +1,11 @@
 package ru.kuznetsov.service;
 
+import ru.cbr.ArrayOfDouble;
+
 import java.util.List;
 
 public interface CBRService {
-    List getCreditOrgInfoList();
+    ArrayOfDouble getInternalCodesFromBicCodes(List bicCodesList);
+    List getCreditOrgInfoList(ArrayOfDouble internalCodes);
     void initCreditOrgInfoSoap();
 }

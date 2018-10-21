@@ -21,20 +21,30 @@ public class CBRServiceImpl implements CBRService{
     }
 
     /**
-     * Получение данных об организациях ввиде списка,
+     * Получение списка внутренних кодов из списка бик кодов
+     * @param bicCodesList список бик кодов организации
+     * @return ArrayOfDouble
+     */
+    @Override
+    public ArrayOfDouble getInternalCodesFromBicCodes(List bicCodesList) {
+        ArrayOfDouble internalCodes = new ArrayOfDouble();
+        List<Double> internalCodesList = internalCodes.getDoubles();
+        for (Object aBicCodesList : bicCodesList) {
+            String bicCode = (String) aBicCodesList;
+            double internalCode = soap.bicToIntCode(bicCode);
+            internalCodesList.add(internalCode);
+        }
+
+        return internalCodes;
+    }
+    /**
+     * Получение данных об организациях в виде списка,
      * используя внутренний код, полученный по bic коду
+     * @param internalCodes список внутренних кодов
      * @return List
      */
-    public List getCreditOrgInfoList(){
+    public List getCreditOrgInfoList(ArrayOfDouble internalCodes){
         try {
-            double internalCode = soap.bicToIntCode("040173725");
-
-            ArrayOfDouble internalCodes = new ArrayOfDouble();
-            List internalCodesList = internalCodes.getDoubles();
-            internalCodesList.add(internalCode);
-            internalCodesList.add((double) 10000002);
-            internalCodesList.add((double) 10000003);
-
             CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult info;
             info = soap.creditInfoByIntCodeExXML(internalCodes);
             log.log(Level.INFO, "creditInfoByIntCodeExXML returned response - true.");
