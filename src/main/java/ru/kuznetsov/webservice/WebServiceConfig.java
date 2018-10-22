@@ -27,7 +27,7 @@ public class WebServiceConfig {
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema creditInfoCBRServiceSchema) {
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
         definition.setPortTypeName("CreditInfoCBRServicePort");
-        definition.setTargetNamespace("http://localhost:8080/WEBService");
+        definition.setTargetNamespace("http://localhost:3000/WEBService");
         definition.setLocationUri("/ws");
         definition.setSchema(creditInfoCBRServiceSchema);
         return definition;

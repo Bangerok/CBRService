@@ -114,9 +114,9 @@
                                 <arg>-b</arg>
                                 <arg>http://www.w3.org/2001/XMLSchema.xsd</arg>
                             </args>
-                            <wsdlUrls>
-                                <wsdlUrl>http://www.cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx?WSDL</wsdlUrl>
-                            </wsdlUrls>
+                            <wsdlFiles>
+                                <wsdlFile>${wsdl-path}/CBR/CreditOrgInfo.xml</wsdlFile>
+                            </wsdlFiles>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalDTD=all</vmArg>
                             </vmArgs>
@@ -132,23 +132,6 @@
                     <xnocompile>true</xnocompile>
                     <verbose>true</verbose>
                     <extension>false</extension>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>ru.kuznetsov.Application</mainClass>
-                            <packageName>ru.kuznetsov.application</packageName>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
-                        </manifest>
-                    </archive>
                 </configuration>
             </plugin>
 
