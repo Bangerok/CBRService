@@ -1,4 +1,4 @@
-package ru.kuznetsov.service;
+package ru.kuznetsov.service.cbr;
 
 import org.springframework.stereotype.Service;
 import ru.cbr.*;

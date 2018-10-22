@@ -1,4 +1,4 @@
-package ru.kuznetsov.webservice;
+package ru.kuznetsov.service.soap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -6,7 +6,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import ru.cbr.ArrayOfDouble;
-import ru.kuznetsov.service.CBRService;
+import ru.kuznetsov.service.cbr.CBRService;
 import ru.kuznetsov.soap.ServiceRequest;
 import ru.kuznetsov.soap.ServiceResponse;
 import ru.kuznetsov.util.UtilService;
@@ -14,7 +14,7 @@ import ru.kuznetsov.util.UtilService;
 import java.util.List;
 
 @Endpoint
-public class WEBServiceEndpoint {
+public class SoapServiceEndpoint {
     private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/soap";
 
     private final CBRService cbrService;
@@ -22,7 +22,7 @@ public class WEBServiceEndpoint {
     private final UtilService utilService;
 
     @Autowired
-    public WEBServiceEndpoint(CBRService cbrService, UtilService utilService) {
+    public SoapServiceEndpoint(CBRService cbrService, UtilService utilService) {
         this.cbrService = cbrService;
         this.utilService = utilService;
     }

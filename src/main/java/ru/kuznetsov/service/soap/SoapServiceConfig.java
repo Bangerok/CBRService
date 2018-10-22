@@ -1,4 +1,4 @@
-package ru.kuznetsov.webservice;
+package ru.kuznetsov.service.soap;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +13,7 @@ import org.springframework.xml.xsd.XsdSchema;
 
 @EnableWs
 @Configuration
-public class WebServiceConfig {
+public class SoapServiceConfig {
 
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext context) {

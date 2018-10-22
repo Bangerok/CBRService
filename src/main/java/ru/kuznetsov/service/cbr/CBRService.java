@@ -1,4 +1,4 @@
-package ru.kuznetsov.service;
+package ru.kuznetsov.service.cbr;
 
 import ru.cbr.ArrayOfDouble;
 
