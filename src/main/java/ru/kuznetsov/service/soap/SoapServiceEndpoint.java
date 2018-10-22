@@ -5,26 +5,19 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import ru.cbr.ArrayOfDouble;
-import ru.kuznetsov.service.cbr.CBRService;
+import ru.kuznetsov.general.GeneralService;
 import ru.kuznetsov.soap.ServiceRequest;
 import ru.kuznetsov.soap.ServiceResponse;
-import ru.kuznetsov.util.UtilService;
-
-import java.util.List;
 
 @Endpoint
 public class SoapServiceEndpoint {
     private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/soap";
 
-    private final CBRService cbrService;
-
-    private final UtilService utilService;
+    private final GeneralService generalService;
 
     @Autowired
-    public SoapServiceEndpoint(CBRService cbrService, UtilService utilService) {
-        this.cbrService = cbrService;
-        this.utilService = utilService;
+    public SoapServiceEndpoint(GeneralService generalService) {
+        this.generalService = generalService;
     }
 
     /**
@@ -38,21 +31,7 @@ public class SoapServiceEndpoint {
         // Берем строку из запроса, которая имеет формат XML
         String stringXML = request.getBicCodesXML();
 
-        // Получаем из нее список bic кодов
-        List bicCodesList = utilService.getDataFromXML(stringXML.substring(1, stringXML.length() - 1));
-
-        // И дальше по bic кодам получаем внутренние коды
-        ArrayOfDouble internalCodesList = cbrService.getInternalCodesFromBicCodes(bicCodesList);
-
-        // По внутреннему коду мы можем получить всю информацию об организации
-        List creditOrgInfoList = cbrService.getCreditOrgInfoList(internalCodesList);
-
-        // Формирование и отправка ответа клиенту
-        ServiceResponse response = new ServiceResponse();
-        response.setTypeResponse("ok");
-        response.setAdditionalInfo(stringXML);
-        response.setFile("test.pdf success");
-
-        return response;
+        // Формируем ответ с помощью метода и возвращаем его клиенту
+        return generalService.processingData(stringXML);
     }
 }
