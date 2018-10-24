@@ -6,12 +6,14 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import ru.kuznetsov.general.GeneralService;
-import ru.kuznetsov.soap.ServiceRequest;
-import ru.kuznetsov.soap.ServiceResponse;
+import ru.kuznetsov.request.ServiceRequest;
+import ru.kuznetsov.request.ServiceResponse;
+
+import java.io.IOException;
 
 @Endpoint
 public class SoapServiceEndpoint {
-    private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/soap";
+    private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/request";
 
     private final GeneralService generalService;
 
@@ -27,7 +29,7 @@ public class SoapServiceEndpoint {
      */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ServiceRequest")
     @ResponsePayload
-    public ServiceResponse getCreditInfoSoap(@RequestPayload ServiceRequest request) {
+    public ServiceResponse getCreditInfoSoap(@RequestPayload ServiceRequest request) throws IOException {
         // Берем строку из запроса, которая имеет формат XML
         String stringXML = request.getBicCodesXML();
 

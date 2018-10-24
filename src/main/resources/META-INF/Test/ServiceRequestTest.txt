@@ -1,1 +1,1 @@
-<![CDATA["<?xml version="1.0" encoding="UTF-8"?><INFO><BIC><CODE>040173725</CODE></BIC><BIC><CODE>040173726</CODE></BIC><BIC><CODE>040173727</CODE></BIC></INFO>"]]>
+<![CDATA["<?xml version="1.0" encoding="UTF-8"?><INFO><BIC><CODE>040173725</CODE></BIC><BIC><CODE>040173771</CODE></BIC></INFO>"]]>

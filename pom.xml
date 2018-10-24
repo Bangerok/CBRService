@@ -15,6 +15,7 @@
 
     <properties>
         <!-- Dependencies properties -->
+        <itext.version>5.5.13</itext.version>
         <!-- End dependencies properties -->
 
         <!-- Plugins properties -->
@@ -35,6 +36,7 @@
     </parent>
 
     <dependencies>
+        <!-- Зависимости для SOAP сервиса -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
@@ -49,6 +51,29 @@
             <groupId>wsdl4j</groupId>
             <artifactId>wsdl4j</artifactId>
         </dependency>
+
+        <!-- Зависимости для JMS сервиса -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-broker</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
+        <!-- Зависимости для PDF -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -61,6 +86,7 @@
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
                 <targetPath>resources</targetPath>
+                <filtering>false</filtering>
             </resource>
         </resources>
 
