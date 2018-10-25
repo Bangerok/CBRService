@@ -28,11 +28,21 @@ public class GeneralServiceImpl implements GeneralService {
 
         // Получаем из строки формата XML список bic кодов
         List bicCodesList = utilService.getDataFromXML(stringXML.substring(1, stringXML.length() - 1));
+        if (bicCodesList == null) {
+            response.setTypeResponse("Error");
+            response.setAdditionalInfo("Bad XML has come");
+
+            return response;
+        }
 
         // И дальше по bic кодам получаем внутренние коды
         ArrayOfDouble internalCodesList = cbrService.getInternalCodesFromBicCodes(bicCodesList);
+        if (internalCodesList.getDoubles().size() < bicCodesList.size()) {
+            response.setTypeResponse("Error");
+            response.setAdditionalInfo("Bad XML has come");
+        }
 
-        // По внутреннему коду мы можем получить всю информацию об организации
+        // По внутренним кодам мы можем получить всю информацию об организациях
         List creditOrgInfoList = cbrService.getCreditOrgInfoList(internalCodesList);
 
         // Создание PDF файла из данных организаций и получение пути до этого файла
@@ -41,9 +51,11 @@ public class GeneralServiceImpl implements GeneralService {
         // Получение из файла строки, содержание которой будет base64
         String stringBase64 = utilService.getBase64FromPDF(filiePathToPDF);
 
+        // Сборка всех данных в ответ
         response.setTypeResponse("Ok");
         response.setAdditionalInfo("Все bic коды существующие!");
         response.setFile(stringBase64);
+
         return response;
     }
 }

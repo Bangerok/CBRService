@@ -31,6 +31,7 @@ public class UtilServiceImpl implements UtilService{
     public List getDataFromXML(String stringXML) {
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+
             Document document = documentBuilder.parse(new InputSource(new StringReader(stringXML)));
 
             Node root = document.getDocumentElement();
@@ -51,9 +52,7 @@ public class UtilServiceImpl implements UtilService{
             }
 
             return dataList;
-        } catch (ParserConfigurationException | SAXException | IOException ex) {
-            ex.printStackTrace(System.out);
-
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             return null;
         }
     }

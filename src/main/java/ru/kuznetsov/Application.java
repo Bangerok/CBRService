@@ -1,5 +1,6 @@
 package ru.kuznetsov;
 
+import org.apache.log4j.BasicConfigurator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jms.annotation.EnableJms;
@@ -12,7 +13,9 @@ public class Application {
     /**
      * Запускает сервер spring-boot и jms
      */
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        BasicConfigurator.configure();
+
         SpringApplication app = new SpringApplication(Application.class);
         app.setDefaultProperties(Collections.singletonMap("server.port", "3000"));
         /*app.setDefaultProperties(Collections.singletonMap("spring.activemq.broker-url", "tcp://localhost:61616"));

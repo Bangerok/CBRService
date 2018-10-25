@@ -17,6 +17,7 @@
         <!-- Dependencies properties -->
         <itext.version>5.5.13</itext.version>
         <commons-codec.version>1.11</commons-codec.version>
+        <log4j.version>1.2.17</log4j.version>
         <!-- End dependencies properties -->
 
         <!-- Plugins properties -->
@@ -80,6 +81,13 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
+        </dependency>
+
+        <!-- Зависимости для логирования  -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
     </dependencies>
 
