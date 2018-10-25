@@ -3,7 +3,7 @@ package ru.kuznetsov.util;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.sun.corba.se.spi.orb.ParserDataFactory;
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -12,6 +12,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import ru.cbr.CreditOrgInfo;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -63,7 +64,7 @@ public class UtilServiceImpl implements UtilService{
      * @return ParserDataFactory
      */
     @Override
-    public String createPDFFileFromCBRdata(List cbrDataList) throws IOException {
+    public String createPDFFileFromCBRdata(List cbrDataList){
         try {
             // Настройка PDF документа вместе с заголовком
             com.itextpdf.text.Document document = new com.itextpdf.text.Document(PageSize.A4, 50, 50, 50, 50);
@@ -86,40 +87,79 @@ public class UtilServiceImpl implements UtilService{
             chapter.setNumberDepth(0);
 
             for (Object cbrData: cbrDataList) {
-                font.setStyle(Font.ITALIC);
-                font.setSize(14);
-
                 if (cbrData.getClass() == CreditOrgInfo.LIC.class) {
                     continue;
                 }
-                CreditOrgInfo.CO cbrDataObject = (CreditOrgInfo.CO) cbrData;
-                Paragraph title11 = new Paragraph(cbrDataObject.getOrgName(), font);
-                Section section = chapter.addSection(title11);
 
-                font.setStyle(Font.NORMAL);
-                font.setSize(12);
-                section.add(new Paragraph("BIC код: " + cbrDataObject.getBIC(), font));
-                section.add(new Paragraph("Внутренний код: " + Integer.toString((int)cbrDataObject.getIntCode()), font));
-                section.add(new Paragraph("Регистрационный номер: " + cbrDataObject.getRegNumber(), font));
-                section.add(new Paragraph("Полное имя организации: " + cbrDataObject.getOrgFullName(), font));
-                section.add(new Paragraph("Телефоны: " + cbrDataObject.getPhones(), font));
-                section.add(new Paragraph("Дата регистрации в КГР: " + cbrDataObject.getDateKGRRegistration().toString(), font));
-                section.add(new Paragraph("Код регистрации: " + cbrDataObject.getMainRegNumber(), font));
-                section.add(new Paragraph("Дата регистрации: " + cbrDataObject.getMainDateReg().toString(), font));
-                section.add(new Paragraph("Уставной адрес: " + cbrDataObject.getUstavAdr(), font));
-                section.add(new Paragraph("Фактический адрес: " + cbrDataObject.getFactAdr(), font));
-                section.add(new Paragraph("Директор: " + cbrDataObject.getDirector(), font));
-                section.add(new Paragraph("Капитал: " + cbrDataObject.getUstMoney(), font));
-                section.add(new Paragraph("Статус организации: " + cbrDataObject.getOrgStatus(), font));
-                section.add(new Paragraph("Регистрационный код: " + cbrDataObject.getRegCode(), font));
-                section.add(new Paragraph("SSV дата: " + cbrDataObject.getSSVDate(), font));
+                CreditOrgInfo.CO cbrDataObject = (CreditOrgInfo.CO) cbrData;
+                Section section = chapter.addSection(new Paragraph(cbrDataObject.getOrgName(), font));
+
+                if (!cbrDataObject.getBIC().equals("")) {
+                    section.add(new Paragraph("BIC код: " + cbrDataObject.getBIC(), font));
+                }
+
+                if (!String.valueOf((int)cbrDataObject.getIntCode()).equals("")) {
+                    section.add(new Paragraph("Внутренний код: " + String.valueOf((int)cbrDataObject.getIntCode()), font));
+                }
+
+                if (!cbrDataObject.getRegNumber().toString().equals("")) {
+                    section.add(new Paragraph("Регистрационный номер: " + cbrDataObject.getRegNumber().toString(), font));
+                }
+
+                if (!cbrDataObject.getOrgFullName().equals("")) {
+                    section.add(new Paragraph("Полное имя организации: " + cbrDataObject.getOrgFullName(), font));
+                }
+
+                if (!cbrDataObject.getPhones().equals("")) {
+                    section.add(new Paragraph("Телефоны: " + cbrDataObject.getPhones(), font));
+                }
+
+                if (!getDateNormal(cbrDataObject.getDateKGRRegistration()).equals("")) {
+                    section.add(new Paragraph("Дата регистрации в КГР: " + getDateNormal(cbrDataObject.getDateKGRRegistration()), font));
+                }
+
+                if (!getDateNormal(cbrDataObject.getMainDateReg()).equals("")) {
+                    section.add(new Paragraph("Дата регистрации: " + getDateNormal(cbrDataObject.getMainDateReg()), font));
+                }
+
+                if (!cbrDataObject.getUstavAdr().equals("")) {
+                    section.add(new Paragraph("Уставной адрес: " + cbrDataObject.getUstavAdr(), font));
+                }
+
+                if (!cbrDataObject.getFactAdr().equals("")) {
+                    section.add(new Paragraph("Фактический адрес: " + cbrDataObject.getFactAdr(), font));
+                }
+
+                if (!cbrDataObject.getDirector().equals("")) {
+                    section.add(new Paragraph("Директор: " + cbrDataObject.getDirector(), font));
+                }
+
+                if (!String.valueOf(cbrDataObject.getUstMoney().intValue()).equals("")) {
+                    section.add(new Paragraph("Капитал: " + String.valueOf(cbrDataObject.getUstMoney().intValue()), font));
+                }
+
+                if (!cbrDataObject.getOrgStatus().equals("")) {
+                    section.add(new Paragraph("Статус организации: " + cbrDataObject.getOrgStatus(), font));
+                }
+
+                if (!cbrDataObject.getRegCode().toString().equals("")) {
+                    section.add(new Paragraph("Регистрационный код: " + cbrDataObject.getRegCode().toString(), font));
+                }
+
+                if (!getDateNormal(cbrDataObject.getSSVDate()).equals("")) {
+                    section.add(new Paragraph("SSV дата: " + getDateNormal(cbrDataObject.getSSVDate()), font));
+                }
             }
 
             document.add(chapter);
             document.close();
 
             return filePath;
-        } catch (DocumentException | FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -133,7 +173,7 @@ public class UtilServiceImpl implements UtilService{
     @Override
     public String createFilePDF() {
         try {
-            String cbrServicePath = "C:\\ProgramData\\CBRService\\";
+            String cbrServicePath = "C:\\ProgramData\\CBRService\\PDF\\";
             File serviceDir = new File(cbrServicePath);
 
             if (!serviceDir.exists()) {
@@ -144,7 +184,7 @@ public class UtilServiceImpl implements UtilService{
 
             UUID uuid = UUID.randomUUID();
             String fileName = uuid.toString() + ".pdf";
-            File filePDF = new File("C:\\ProgramData\\CBRService\\" + fileName);
+            File filePDF = new File(cbrServicePath + fileName);
             if (!filePDF.exists()) {
                 if (filePDF.createNewFile()) {
                     return filePDF.getAbsolutePath();
@@ -162,12 +202,23 @@ public class UtilServiceImpl implements UtilService{
     }
 
     /**
-     * Получение Base64 из файла PDF
-     * @param filePDF файл формата PDF
-     * @return Base64
+     * Получение строки Base64 из файла
+     * @param fileName имя файла
+     * @return String
      */
     @Override
-    public Base64 getBase64FromPDF(ParserDataFactory filePDF) {
-        return null;
+    public String getBase64FromPDF(String fileName) throws IOException {
+        File file = new File(fileName);
+        return Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(file));
+    }
+
+    /**
+     *  Получение стандартной формы записи даты
+     * @param date XMLGregorianCalendar
+     * @return String
+     */
+    @Override
+    public String getDateNormal(XMLGregorianCalendar date) {
+        return Integer.toString(date.getYear()) + '-' + Integer.toString(date.getMonth()) + '-' + Integer.toString(date.getDay());
     }
 }

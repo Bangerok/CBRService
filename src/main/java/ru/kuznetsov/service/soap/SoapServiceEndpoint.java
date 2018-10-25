@@ -29,11 +29,17 @@ public class SoapServiceEndpoint {
      */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ServiceRequest")
     @ResponsePayload
-    public ServiceResponse getCreditInfoSoap(@RequestPayload ServiceRequest request) throws IOException {
+    public ServiceResponse getCreditInfoSoap(@RequestPayload ServiceRequest request){
         // Берем строку из запроса, которая имеет формат XML
         String stringXML = request.getBicCodesXML();
 
         // Формируем ответ с помощью метода и возвращаем его клиенту
-        return generalService.processingData(stringXML);
+        try {
+            return generalService.processingData(stringXML);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

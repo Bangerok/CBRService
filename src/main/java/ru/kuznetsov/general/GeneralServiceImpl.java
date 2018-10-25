@@ -3,8 +3,8 @@ package ru.kuznetsov.general;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.cbr.ArrayOfDouble;
-import ru.kuznetsov.service.cbr.CBRService;
 import ru.kuznetsov.request.ServiceResponse;
+import ru.kuznetsov.service.cbr.CBRService;
 import ru.kuznetsov.util.UtilService;
 
 import java.io.IOException;
@@ -38,6 +38,12 @@ public class GeneralServiceImpl implements GeneralService {
         // Создание PDF файла из данных организаций и получение пути до этого файла
         String filiePathToPDF = utilService.createPDFFileFromCBRdata(creditOrgInfoList);
 
+        // Получение из файла строки, содержание которой будет base64
+        String stringBase64 = utilService.getBase64FromPDF(filiePathToPDF);
+
+        response.setTypeResponse("Ok");
+        response.setAdditionalInfo("Все bic коды существующие!");
+        response.setFile(stringBase64);
         return response;
     }
 }
