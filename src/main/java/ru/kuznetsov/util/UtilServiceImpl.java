@@ -28,7 +28,7 @@ public class UtilServiceImpl implements UtilService{
      * @return ArrayOfDouble
      */
     @Override
-    public List getDataFromXML(String stringXML) {
+    public List getDataFromXML(String stringXML) throws Exception {
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 
@@ -53,7 +53,7 @@ public class UtilServiceImpl implements UtilService{
 
             return dataList;
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            return null;
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -63,7 +63,7 @@ public class UtilServiceImpl implements UtilService{
      * @return ParserDataFactory
      */
     @Override
-    public String createPDFFileFromCBRdata(List cbrDataList){
+    public String createPDFFileFromCBRdata(List cbrDataList) throws Exception {
         try {
             // Настройка PDF документа вместе с заголовком
             com.itextpdf.text.Document document = new com.itextpdf.text.Document(PageSize.A4, 50, 50, 50, 50);
@@ -154,15 +154,9 @@ public class UtilServiceImpl implements UtilService{
             document.close();
 
             return filePath;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (DocumentException | IOException e) {
+            throw new Exception(e.getMessage());
         }
-
-        return null;
     }
 
     /**
@@ -170,7 +164,7 @@ public class UtilServiceImpl implements UtilService{
      * @return String - путь до файла PDF
      */
     @Override
-    public String createFilePDF() {
+    public String createFilePDF() throws IOException {
         try {
             String cbrServicePath = "C:\\ProgramData\\CBRService\\PDF\\";
             File serviceDir = new File(cbrServicePath);
@@ -194,9 +188,7 @@ public class UtilServiceImpl implements UtilService{
                 return filePDF.getAbsolutePath();
             }
         } catch (IOException e) {
-            e.printStackTrace();
-
-            return null;
+            throw new IOException(e.getMessage());
         }
     }
 
@@ -207,8 +199,13 @@ public class UtilServiceImpl implements UtilService{
      */
     @Override
     public String getBase64FromPDF(String fileName) throws IOException {
-        File file = new File(fileName);
-        return Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(file));
+        try {
+            File file = new File(fileName);
+
+            return Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(file));
+        } catch (IOException e) {
+            throw new IOException(e.getMessage());
+        }
     }
 
     /**
@@ -219,5 +216,18 @@ public class UtilServiceImpl implements UtilService{
     @Override
     public String getDateNormal(XMLGregorianCalendar date) {
         return Integer.toString(date.getYear()) + '-' + Integer.toString(date.getMonth()) + '-' + Integer.toString(date.getDay());
+    }
+
+    /**
+     * Очистка папки от всех файлов.
+     * @param filePath путь до удаляемого файла
+     */
+    @Override
+    public void deleteFile(String filePath) {
+        File fileForDelete = new File(filePath);
+
+        if (fileForDelete.isFile() &&  fileForDelete.exists()) {
+            fileForDelete.delete();
+        }
     }
 }

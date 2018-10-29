@@ -10,10 +10,6 @@ import ru.kuznetsov.general.GeneralService;
 import ru.kuznetsov.request.ServiceRequest;
 import ru.kuznetsov.request.ServiceResponse;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Objects;
-
 @Endpoint
 public class SoapServiceEndpoint {
     private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/request";
@@ -34,32 +30,15 @@ public class SoapServiceEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ServiceRequest")
     @ResponsePayload
     public ServiceResponse getCreditInfoSoap(@RequestPayload ServiceRequest request){
-        try {
-            logger.info("Request received.");
+        logger.info("Request received.");
 
-            // Берем строку из запроса, которая имеет формат XML
-            String stringXML = request.getBicCodesXML();
+        // Берем строку из запроса, которая имеет формат XML
+        String stringXML = request.getBicCodesXML();
 
-            // Формируем ответ с помощью метода и возвращаем его клиенту
-            ServiceResponse response = generalService.processingData(stringXML);
+        // Формируем ответ с помощью метода и возвращаем его клиенту
+        ServiceResponse response = generalService.processingData(stringXML);
 
-            logger.info("Response send.");
-            return response;
-        } catch (IOException e) {
-            e.printStackTrace();
-
-            logger.error("No valid request data.");
-            return null;
-        } finally {
-            for (File file: Objects.requireNonNull(new File("C:\\ProgramData\\CBRService\\PDF\\").listFiles())) {
-                if (file.isFile()) {
-                    if (file.delete()) {
-                        logger.info("PDF file - " + file.getName() + ", delete success.");
-                    } else {
-                        logger.error("PDF file - " + file.getName() + ", delete error.");
-                    }
-                }
-            }
-        }
+        logger.info("Response send.");
+        return response;
     }
 }

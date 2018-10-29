@@ -29,9 +29,15 @@ public class CBRServiceImpl implements CBRService{
     public ArrayOfDouble getInternalCodesFromBicCodes(List bicCodesList) {
         ArrayOfDouble internalCodes = new ArrayOfDouble();
         List<Double> internalCodesList = internalCodes.getDoubles();
+
         for (Object aBicCodesList : bicCodesList) {
             String bicCode = (String) aBicCodesList;
             double internalCode = soap.bicToIntCode(bicCode);
+
+            if (internalCode == -1) {
+                continue;
+            }
+
             internalCodesList.add(internalCode);
         }
 
@@ -44,16 +50,11 @@ public class CBRServiceImpl implements CBRService{
      * @return List
      */
     public List getCreditOrgInfoList(ArrayOfDouble internalCodes){
-        try {
-            CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult info;
-            info = soap.creditInfoByIntCodeExXML(internalCodes);
-            log.log(Level.INFO, "creditInfoByIntCodeExXML returned response - true.");
+        CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult info;
+        info = soap.creditInfoByIntCodeExXML(internalCodes);
+        log.log(Level.INFO, "creditInfoByIntCodeExXML returned response - true.");
 
-            return ((CreditOrgInfo) info.getContent().get(0)).getCOSAndLICS();
-        } catch (Exception e) {
-            log.log(Level.SEVERE, "Exception - " + e.getMessage());
-            return null;
-        }
+        return ((CreditOrgInfo) info.getContent().get(0)).getCOSAndLICS();
     }
 
     /**
