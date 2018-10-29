@@ -1,6 +1,5 @@
 package ru.kuznetsov.service.soap;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -13,7 +12,6 @@ import ru.kuznetsov.request.ServiceResponse;
 @Endpoint
 public class SoapServiceEndpoint {
     private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/request";
-    private static Logger logger = Logger.getLogger(SoapServiceEndpoint.class);
 
     private final GeneralService generalService;
 
@@ -30,15 +28,12 @@ public class SoapServiceEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ServiceRequest")
     @ResponsePayload
     public ServiceResponse getCreditInfoSoap(@RequestPayload ServiceRequest request){
-        logger.info("Request received.");
-
         // Берем строку из запроса, которая имеет формат XML
         String stringXML = request.getBicCodesXML();
 
         // Формируем ответ с помощью метода и возвращаем его клиенту
         ServiceResponse response = generalService.processingData(stringXML);
 
-        logger.info("Response send.");
         return response;
     }
 }

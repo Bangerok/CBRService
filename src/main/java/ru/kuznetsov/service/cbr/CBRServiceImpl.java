@@ -2,22 +2,22 @@ package ru.kuznetsov.service.cbr;
 
 import org.springframework.stereotype.Service;
 import ru.cbr.*;
-import ru.kuznetsov.Application;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Service
 public class CBRServiceImpl implements CBRService{
-    private static Logger log = Logger.getLogger(Application.class.getName());
     private CreditOrgInfoSoap soap;
 
     /**
      * Конструктор CBRServiceImpl, в котором инициализируется объект типа CreditOrgInfoSoap
      */
-    public CBRServiceImpl() {
-        initCreditOrgInfoSoap();
+    public CBRServiceImpl() throws Exception {
+        try {
+            initCreditOrgInfoSoap();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
     /**
@@ -52,7 +52,6 @@ public class CBRServiceImpl implements CBRService{
     public List getCreditOrgInfoList(ArrayOfDouble internalCodes){
         CreditInfoByIntCodeExXMLResponse.CreditInfoByIntCodeExXMLResult info;
         info = soap.creditInfoByIntCodeExXML(internalCodes);
-        log.log(Level.INFO, "creditInfoByIntCodeExXML returned response - true.");
 
         return ((CreditOrgInfo) info.getContent().get(0)).getCOSAndLICS();
     }
@@ -60,11 +59,11 @@ public class CBRServiceImpl implements CBRService{
     /**
      * Инициализация объекта для работы с CBR.ru методами
      */
-    public void initCreditOrgInfoSoap(){
+    public void initCreditOrgInfoSoap() throws Exception {
         try {
             this.soap = new CreditOrgInfo_Service().getCreditOrgInfoSoap();
         } catch (Exception e) {
-            log.log(Level.SEVERE, "Exception [initCreditOrgInfoSoap] - " + e.getMessage());
+            throw new Exception(e.getMessage());
         }
     }
 }

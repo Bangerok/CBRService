@@ -1,5 +1,6 @@
 package ru.kuznetsov.general;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.cbr.ArrayOfDouble;
@@ -11,8 +12,9 @@ import java.util.List;
 
 @Service
 public class GeneralServiceImpl implements GeneralService {
-    private final CBRService cbrService;
+    private static final Logger logger = Logger.getLogger(GeneralServiceImpl.class);
 
+    private final CBRService cbrService;
     private final UtilService utilService;
 
     @Autowired
@@ -26,6 +28,7 @@ public class GeneralServiceImpl implements GeneralService {
         ServiceResponse response = new ServiceResponse();
         response.setTypeResponse("Ok");
         response.setAdditionalInfo("All done!");
+        logger.info("Test Logger");
 
         try {
             // Получаем из строки формата XML список bic кодов
