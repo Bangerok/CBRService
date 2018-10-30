@@ -9,12 +9,19 @@ import ru.kuznetsov.service.general.GeneralService;
 import ru.kuznetsov.request.ServiceRequest;
 import ru.kuznetsov.request.ServiceResponse;
 
+/** Класс, отвечающий за прием SOAP запросов
+ * @author Kuznetsov Vladislav
+ * @version 1.8.2
+ */
 @Endpoint
 public class SoapServiceEndpoint {
     private static final String NAMESPACE_URI = "http://www.kuznetsov.ru/request";
 
     private final GeneralService generalService;
 
+    /**
+     * Конструктор "GeneralServiceImpl", в котором инициализируются объекты "generalService" типа "GeneralService"
+     */
     @Autowired
     public SoapServiceEndpoint(GeneralService generalService) {
         this.generalService = generalService;

@@ -11,14 +11,22 @@ import ru.kuznetsov.request.ServiceResponse;
 import javax.jms.JMSException;
 import javax.jms.TextMessage;
 
+/** Класс, отвечающий за получение JMS сообщений
+ * @author Kuznetsov Vladislav
+ * @version 1.8.2
+ */
 @Component
 public class JMSListener {
     private final GeneralService generalService;
 
+    /**
+     * Конструктор "GeneralServiceImpl", в котором инициализируются объекты "generalService" типа "GeneralService"
+     */
     @Autowired
     public JMSListener(GeneralService generalService) {
         this.generalService = generalService;
     }
+
 
     @JmsListener(destination = "inbound.queue")
     @SendTo("outbound.queue")

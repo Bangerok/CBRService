@@ -5,12 +5,16 @@ import ru.cbr.*;
 
 import java.util.List;
 
+/** Сервисный класс, отвечающий за работу с cbr
+ * @author Kuznetsov Vladislav
+ * @version 1.7.3
+ */
 @Service
 public class CBRServiceImpl implements CBRService{
     private CreditOrgInfoSoap soap;
 
     /**
-     * Конструктор CBRServiceImpl, в котором инициализируется объект типа CreditOrgInfoSoap
+     * Конструктор "CBRServiceImpl", в котором инициализируется объект "soap" типа "CreditOrgInfoSoap"
      */
     public CBRServiceImpl() throws Exception {
         try {

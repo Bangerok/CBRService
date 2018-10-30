@@ -20,6 +20,10 @@ import java.io.*;
 import java.util.*;
 import java.util.List;
 
+/** Сервисный класс для методов общего назначения
+ * @author Kuznetsov Vladislav
+ * @version 1.8.2
+ */
 @Service
 public class UtilServiceImpl implements UtilService{
     /**

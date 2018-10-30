@@ -10,6 +10,10 @@ import ru.kuznetsov.service.util.UtilService;
 
 import java.util.List;
 
+/** Сервисный класс, отвечающий за связь между утилитным классом и классом работы с cbr
+ * @author Kuznetsov Vladislav
+ * @version 1.8.2
+ */
 @Service
 public class GeneralServiceImpl implements GeneralService {
     private static final Logger logger = Logger.getLogger(GeneralServiceImpl.class);
@@ -17,6 +21,9 @@ public class GeneralServiceImpl implements GeneralService {
     private final CBRService cbrService;
     private final UtilService utilService;
 
+    /**
+     * Конструктор "GeneralServiceImpl", в котором инициализируются объекты "cbrService" типа "CBRService" и "utilService" типа "UtilService"
+     */
     @Autowired
     public GeneralServiceImpl(CBRService cbrService, UtilService utilService) {
         this.cbrService = cbrService;

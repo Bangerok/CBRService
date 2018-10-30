@@ -11,6 +11,10 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+/** Класс, отвечающий за конфигурацию SOAP взаимодействия
+ * @author Kuznetsov Vladislav
+ * @version 1.8.0
+ */
 @EnableWs
 @Configuration
 public class SoapServiceConfig {
