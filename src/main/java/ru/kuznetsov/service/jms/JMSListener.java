@@ -12,7 +12,6 @@ import java.util.Map;
 
 @Component
 public class JMSListener {
-
     @JmsListener(destination = "inbound.queue")
     @SendTo("outbound.queue")
     public String receiveMessage(final Message jsonMessage) throws JMSException {
