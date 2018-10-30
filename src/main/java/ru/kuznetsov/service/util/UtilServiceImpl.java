@@ -79,7 +79,7 @@ public class UtilServiceImpl implements UtilService{
 
             // Настройка шрифта для отображения русских символов
             BaseFont baseFont = BaseFont.createFont(Objects.requireNonNull(getClass().getClassLoader().getResource(
-                    "resources/fonts/times-new-roman.ttf")).getPath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                    "fonts/times-new-roman.ttf")).getPath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font font = new Font(baseFont);
 
             // Формирование текста PDF документа

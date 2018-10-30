@@ -100,10 +100,6 @@
         <resources>
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
-                <targetPath>resources</targetPath>
-                <includes>
-                    <include>**/*</include>
-                </includes>
             </resource>
         </resources>
 
