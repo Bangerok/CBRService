@@ -13,7 +13,7 @@ import org.springframework.xml.xsd.XsdSchema;
 
 /** Класс, отвечающий за конфигурацию SOAP взаимодействия
  * @author Kuznetsov Vladislav
- * @version 1.8.0
+ * @version 1.8.6
  */
 @EnableWs
 @Configuration
