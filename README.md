@@ -42,6 +42,8 @@
 
 - Сделать **Clone** проекта;
 - Выполнить команду **mvn spring-boot:run**;
-- Для проверки я использовал XML строку - [пример строки XML формата](https://github.com/Bangerok/CBRService/blob/master/src/main/resources/META-INF/Test/ServiceRequestTest.txt)</b>;
+- Будет запущен сервис для SOAP взаимодействия по порту 8080. WSDL для SOAP UI можно взять по <b>[адресу](http://localhost:8080/ws/CreditInfoCBRService.wsdl)</b>;
+- Также будет запущена очередь, проверить которую можно, например, используя свой ActiveMQ. 
+- Для проверки я использовал XML строку - <b>[пример строки XML формата](https://github.com/Bangerok/CBRService/blob/master/src/main/resources/META-INF/Test/ServiceRequestTest.txt)</b>;
 - Отправить получившийся запрос;
 - Получить и смотреть ответ.
