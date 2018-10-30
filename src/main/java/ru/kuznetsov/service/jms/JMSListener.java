@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
-import ru.kuznetsov.general.GeneralService;
+import ru.kuznetsov.service.general.GeneralService;
 import ru.kuznetsov.request.ServiceResponse;
 
 import javax.jms.JMSException;

@@ -1,4 +1,4 @@
-package ru.kuznetsov.general;
+package ru.kuznetsov.service.general;
 
 import ru.kuznetsov.request.ServiceResponse;
 

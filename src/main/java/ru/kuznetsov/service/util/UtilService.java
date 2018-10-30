@@ -1,4 +1,4 @@
-package ru.kuznetsov.util;
+package ru.kuznetsov.service.util;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.IOException;

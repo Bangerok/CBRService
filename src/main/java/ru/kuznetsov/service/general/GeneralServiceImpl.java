@@ -1,4 +1,4 @@
-package ru.kuznetsov.general;
+package ru.kuznetsov.service.general;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.cbr.ArrayOfDouble;
 import ru.kuznetsov.request.ServiceResponse;
 import ru.kuznetsov.service.cbr.CBRService;
-import ru.kuznetsov.util.UtilService;
+import ru.kuznetsov.service.util.UtilService;
 
 import java.util.List;
 

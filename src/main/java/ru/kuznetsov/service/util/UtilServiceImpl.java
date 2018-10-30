@@ -1,4 +1,4 @@
-package ru.kuznetsov.util;
+package ru.kuznetsov.service.util;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
