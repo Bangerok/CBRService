@@ -32,8 +32,6 @@ public class SoapServiceEndpoint {
         String stringXML = request.getBicCodesXML();
 
         // Формируем ответ с помощью метода и возвращаем его клиенту
-        ServiceResponse response = generalService.processingData(stringXML);
-
-        return response;
+        return generalService.processingData(stringXML);
     }
 }
