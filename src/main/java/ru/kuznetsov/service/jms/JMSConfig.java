@@ -8,16 +8,13 @@ import org.springframework.jms.core.JmsTemplate;
 
 /** Класс, отвечающий за конфигурацию JMS взаимодействия
  * @author Kuznetsov Vladislav
- * @version 1.8.0
+ * @version 2.0.1
  */
 @Configuration
 public class JMSConfig {
     @Bean
     public ActiveMQConnectionFactory connectionFactory(){
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-        connectionFactory.setBrokerURL("tcp://localhost:61616");
-        connectionFactory.setPassword("admin");
-        connectionFactory.setUserName("admin");
         return connectionFactory;
     }
 

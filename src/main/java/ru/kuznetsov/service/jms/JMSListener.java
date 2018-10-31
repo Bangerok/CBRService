@@ -1,6 +1,7 @@
 package ru.kuznetsov.service.jms;
 
 import org.apache.activemq.Message;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -13,10 +14,11 @@ import javax.jms.TextMessage;
 
 /** Класс, отвечающий за получение JMS сообщений
  * @author Kuznetsov Vladislav
- * @version 1.8.2
+ * @version 2.0.1
  */
 @Component
 public class JMSListener {
+    private static final Logger logger = Logger.getLogger(JMSListener.class);
     private final GeneralService generalService;
 
     /**
@@ -32,19 +34,25 @@ public class JMSListener {
     @SendTo("outbound.queue")
     public String receiveMessage(Message message) {
         try {
+            logger.info("JMS запрос получен");
+
             String stringXML;
             ServiceResponse response;
 
             // Берем строку из запроса, которая имеет формат XML
             TextMessage textMessage = (TextMessage) message;
             stringXML = textMessage.getText();
+            logger.info("Пришла строка - " + stringXML);
 
             // Формируем ответ с помощью метода и возвращаем его клиенту
             response = generalService.processingData(stringXML);
 
+            logger.info("JMS ответ отправлен");
             return response.getFile();
         } catch (JMSException e) {
-            return null;
+            logger.error(e.getMessage());
+
+            return e.getMessage();
         }
     }
 
