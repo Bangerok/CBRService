@@ -22,7 +22,7 @@ import java.util.List;
 
 /** Сервисный класс для методов общего назначения
  * @author Kuznetsov Vladislav
- * @version 1.8.6
+ * @version 2.0.0
  */
 @Service
 public class UtilServiceImpl implements UtilService{
@@ -170,7 +170,7 @@ public class UtilServiceImpl implements UtilService{
     @Override
     public String createFilePDF() throws IOException {
         try {
-            String cbrServicePath = "C:\\ProgramData\\CBRService\\PDF\\";
+            String cbrServicePath = "temp\\pdf\\";
             File serviceDir = new File(cbrServicePath);
 
             if (!serviceDir.exists()) {

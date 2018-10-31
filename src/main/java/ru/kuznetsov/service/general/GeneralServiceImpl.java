@@ -12,7 +12,7 @@ import java.util.List;
 
 /** Сервисный класс, отвечающий за связь между утилитным классом и классом работы с cbr
  * @author Kuznetsov Vladislav
- * @version 1.8.2
+ * @version 2.0.0
  */
 @Service
 public class GeneralServiceImpl implements GeneralService {
@@ -32,10 +32,11 @@ public class GeneralServiceImpl implements GeneralService {
 
     @Override
     public ServiceResponse processingData(String stringXML) {
+        logger.info("Обработка данных запроса началась");
+
         ServiceResponse response = new ServiceResponse();
         response.setTypeResponse("Ok");
         response.setAdditionalInfo("All done!");
-        logger.info("Test Logger");
 
         try {
             // Получаем из строки формата XML список bic кодов
@@ -46,6 +47,7 @@ public class GeneralServiceImpl implements GeneralService {
 
                 return response;
             }
+            logger.info("BIC коды получены");
 
             // И дальше по bic кодам получаем внутренние коды
             ArrayOfDouble internalCodesList = cbrService.getInternalCodesFromBicCodes(bicCodesList);
@@ -56,21 +58,29 @@ public class GeneralServiceImpl implements GeneralService {
 
                 if (internalCodesList.getDoubles().size() == 0) {
                     response.setTypeResponse("Warning/Error");
+                    logger.warn("Не найдены внутренние коды по BIC кодам.");
+
                     return response;
                 }
+
+                logger.warn("Не найдено BIC кодов в базе CBR - " + countInternalCodes);
             }
 
             // По внутренним кодам мы можем получить всю информацию об организациях
             List creditOrgInfoList = cbrService.getCreditOrgInfoList(internalCodesList);
+            logger.info("Информация по организация получена");
 
             // Создание PDF файла из данных организаций и получение пути до этого файла
             String filePathToPDF = utilService.createPDFFileFromCBRdata(creditOrgInfoList);
+            logger.info("PDF файл создан");
 
             // Получение из файла строки, содержание которой будет base64
             String stringBase64 = utilService.getBase64FromPDF(filePathToPDF);
+            logger.info("Получена строка вида base64 из PDF файла");
 
             // Удаление файла
             utilService.deleteFile(filePathToPDF);
+            logger.info("Временная папка очищена");
 
             // Отправка ответа
             response.setFile(stringBase64);
@@ -79,8 +89,11 @@ public class GeneralServiceImpl implements GeneralService {
         } catch (Exception e) {
             response.setTypeResponse("Error");
             response.setAdditionalInfo(e.getMessage());
+            logger.error(e.getMessage());
 
             return response;
+        } finally {
+            logger.info("Ответ сформирован");
         }
     }
 }
