@@ -8,14 +8,13 @@ import org.springframework.jms.core.JmsTemplate;
 
 /** Класс, отвечающий за конфигурацию JMS взаимодействия
  * @author Kuznetsov Vladislav
- * @version 2.0.1
+ * @version 2.0.2
  */
 @Configuration
 public class JMSConfig {
     @Bean
     public ActiveMQConnectionFactory connectionFactory(){
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-        return connectionFactory;
+        return new ActiveMQConnectionFactory();
     }
 
     @Bean
