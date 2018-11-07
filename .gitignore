@@ -1,6 +1,5 @@
 *.iml
 .idea
-README.md
 src/main/java/ru/cbr
 src/main/java/ru/kuznetsov/request
 temp
